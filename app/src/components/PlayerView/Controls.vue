@@ -7,8 +7,7 @@
         <button id="show_station_button" @click="showStationList">{{showstationstext}}</button>
         
         <div id="volume_slider" class="volume-slider">
-            - <input id="volume_slider" type="range" min="0" max="1" step="0.01" :value="volumeslider" v-model="volumeslider" v-on:input="volupdate"> +
-            <span class="volume-display" v-text="prettyvalue.toFixed()"></span>
+            <input id="volume_slider" type="range" min="0" max="1" step="0.01" v-model="initialvolumeslidervalue" v-on:input="volupdate">
         </div>
     </div> 
 </template>
@@ -21,9 +20,13 @@
         methods: {
 
             volupdate: function(e) {
-                //console.log(e.target.value);
+
                 player.volume = e.target.value
-                console.log(player.volume)
+
+                store.commit('updatevolume', {
+                  newvolume: e.target.value
+                })
+
             },
 
             toggleplaying: function() {
@@ -43,8 +46,7 @@
 
         data () {
             return {
-                volumeslider: this.$store.state.volumeslider,
-                volumeslidervalue: 1,
+                initialvolumeslidervalue: 1,
                 playtoggletext: this.$store.state.playToggleText,
                 showstationstext: 'Stationlist'
             }
@@ -54,8 +56,8 @@
             prettyvalue: function () {
                 return this.volumeslider * 100
             },
-            count () {
-                return store.state.count
+            currentvolume: function() {
+                return store.state.currentvolume * 100
             }
         },
 
@@ -105,7 +107,6 @@
 
     input[type=range] {
         -webkit-appearance: none;
-        //margin: 10px 0;
         width: 100px;
         background: $bg-color;
     }

@@ -5,6 +5,7 @@
     		<div id="stationName" class="station-name">{{currentstation}}</div>
     		<div id="currentTrack" class="current-track">{{currenttrack}}</div>
             <!--<div id="currentVolume" class="current-volume"><span v-text="prettyvalue.toFixed()"></span></div>-->
+            <div id="currentVolume" class="current-volume">VOL: {{currentvolume.toFixed()}}</div>
     	</div>
     </div>
 </template>
@@ -38,6 +39,9 @@
             },
             currenttrack: function() {
                 return store.state.currenttrack
+            },
+            currentvolume: function() {
+                return store.state.currentvolume * 100
             }
         },
 

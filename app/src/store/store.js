@@ -44,8 +44,8 @@ export default new Vuex.Store({
           }
 
         ],
-        volumeSlider:'1',
-        currentVolume: '1',
+        //volumeSlider:'1',
+        currentvolume: '1',
         playToggleText: '▶',
         isPlaying: 0,
 
@@ -59,6 +59,10 @@ export default new Vuex.Store({
 
         updatecurrentstation (state, payload) {
           state.currentstation = payload.newstation
+        },
+
+        updatevolume (state, payload) {
+          state.currentvolume = payload.newvolume
         }
     },
 
