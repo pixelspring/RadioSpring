@@ -7,7 +7,7 @@
         <button id="show_station_button" @click="showStationList">{{showstationstext}}</button>
         
         <div id="volume_slider" class="volume-slider">
-            -<input id="volume_slider" type="range" min="0" max="1" step="0.01" :value="volumeslider" v-model="volumeslider" v-on:input="volupdate">+
+            - <input id="volume_slider" type="range" min="0" max="1" step="0.01" :value="volumeslider" v-model="volumeslider" v-on:input="volupdate"> +
             <span class="volume-display" v-text="prettyvalue.toFixed()"></span>
         </div>
     </div> 
@@ -73,6 +73,8 @@
 
     @import "./app/src/scss/settings.scss";
 
+    $volumeSliderheight: 8px;
+
     .controls {
         margin-left: 16px;
     }
@@ -103,29 +105,29 @@
 
     input[type=range] {
         -webkit-appearance: none;
-        margin: 10px 0;
-        width: 120px;
+        //margin: 10px 0;
+        width: 100px;
+        background: $bg-color;
     }
     input[type=range]:focus {
         outline: none;
     }
     input[type=range]::-webkit-slider-runnable-track {
         width: 100%;
-        height: 4px;
+        height: $volumeSliderheight;
         box-shadow: 0px 0px 0px #000000;
         background: black;
-        border-radius: 4px;
+        border-radius: 50px;
         border: 0px solid #000000;
     }
     input[type=range]::-webkit-slider-thumb {
         box-shadow: 0px 0px 0px #000000;
         border: 1px solid $active-color;
-        height: 14px;
-        width:  14px;
-        border-radius: 25px;
-        background: black;
+        height: $volumeSliderheight;
+        width:  $volumeSliderheight;
+        border-radius: 50px;
+        background: $bg-color;
         -webkit-appearance: none;
-        margin-top: -4px;
     }
     input[type=range]:active::-webkit-slider-runnable-track {
         background: $active-color;
