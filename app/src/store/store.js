@@ -49,7 +49,7 @@ export default new Vuex.Store({
         playToggleText: '▶',
         isPlaying: 0,
 
-        currentstation: '',
+        currentstation: 'Pick a station',
         currenttrack: 'currenttrack',
     },
 
