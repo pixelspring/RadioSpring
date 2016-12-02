@@ -3,16 +3,20 @@
         <table>
             <thead>
                 <tr>
+                    <th>♡</th>
                     <th>Title</th>
                     <th>Stream Url</th>
                     <th>Website</th>
+                    <th>✘</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="s in streamlist" @click.prevent="stream(s.name, s.url, s.web)">
+                    <td>♡</td>
                     <td>{{ s.name }}</td>
                     <td>{{ s.url }}</td>
                     <td>{{ s.web }}</td>
+                    <td>✘</td>
                 </tr>
             </tbody>
         </table>
@@ -86,9 +90,13 @@
 
     @import "./app/src/scss/settings.scss";
 
+    $scrollable-table-height: 160px;
+
     .station-list {
         
     }
+
+    thead, tbody, tr, td, th { display: block; }
 
     table {
         width: 100vw;
@@ -96,6 +104,12 @@
         border: 0;
         border-collapse: collapse;
         border-spacing: 0;
+        cursor: default;
+        white-space: nowrap;
+        text-overflow: clip;
+
+        table-layout: fixed;
+        width: 100%;
     }
 
     th,
@@ -103,6 +117,7 @@
         text-transform: uppercase;
         background: black;
         font-size: 10px;
+        height: 26px;
     }
 
     th,
@@ -110,6 +125,14 @@
         padding: 7px;
         text-align: left;
 
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    tbody {
+        height: $scrollable-table-height;
+        overflow-y: auto;
     }
 
     tbody tr {
@@ -121,38 +144,22 @@
         background-color: #3C3C3C;
     }
 
-// -----------------------
+    td:nth-child(1), th:nth-child(1) { width: 5% }
+    td:nth-child(2), th:nth-child(2) { width: 25% }
+    td:nth-child(3), th:nth-child(3) { width: 40% }
+    td:nth-child(4), th:nth-child(4) { width: 25% }
+    td:nth-child(5), th:nth-child(5) { width: 5% }
 
-thead, tbody, tr, td, th { display: block; }
+    
+    tr:after {
+        content: ' ';
+        display: block;
+        visibility: hidden;
+        clear: both;
+    }
 
-tr:after {
-    content: ' ';
-    display: block;
-    visibility: hidden;
-    clear: both;
-}
-
-thead th {
-    height: 26px;
-}
-
-tbody {
-    height: 200px;
-    overflow-y: auto;
-}
-
-thead {
-    /* fallback */
-}
-
-
-tbody td, thead th {
-    //width: 33.333333%;
-    float: left;
-}
-
-td:nth-child(1), th:nth-child(1) { width: 25% }
-td:nth-child(2), th:nth-child(2) { width: 50% }
-td:nth-child(3), th:nth-child(3) { width: 25% }
+    tbody td, thead th {
+        float: left;
+    }
 
 </style>
