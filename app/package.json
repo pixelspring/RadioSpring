@@ -1,0 +1,14 @@
+{
+  "name": "radiospring",
+  "version": "0.0.0",
+  "description": "Internet radio player app",
+  "main": "electron.js",
+  "dependencies": {
+    "vue": "^2.0.1",
+    "vue-electron": "^1.0.0",
+    "vue-resource": "^1.0.3",
+    "vuex": "^2.0.0"
+  },
+  "devDependencies": {},
+  "author": "Mike Seaby <mike@pixelspring.co.uk>"
+}
