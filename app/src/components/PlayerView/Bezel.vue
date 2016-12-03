@@ -4,9 +4,10 @@
       	<div class="info">
     		<div id="stationName" class="station-name">{{currentstation}}</div>
     		<div id="currentTrack" class="current-track">{{currenttrack}}</div>
-            <!--<div id="currentVolume" class="current-volume"><span v-text="prettyvalue.toFixed()"></span></div>-->
-            <div id="currentVolume" class="current-volume">VOL: {{currentvolume.toFixed()}}</div>
     	</div>
+        <div class="indicators">
+            <div id="currentVolume" class="current-volume">&#128264; {{currentvolume.toFixed()}}</div>
+        </div>
     </div>
 </template>
 
@@ -71,17 +72,31 @@
     @import "./app/src/scss/settings.scss";
 
     .bezel {
-	    padding: 8px 16px;
+	    padding: 8px 12px;
 	    border-radius: 4px;
 
-	    flex-grow: 1;
+	    height: $bezel-height;
+        display: flex;
+        flex-grow: 1;
 
 	    background: black;
 	    color: $bezel-text-color;
 	}
 
+    .info {
+        order: 1;
+        width: auto;
+        flex-grow: 1;
+    }
+
+    .indicators {
+        order: 2;
+        width: 35px;
+    }
+
 	.station-name {
 		font-size: 12px;
+        width: 80%;
 	}
 
 	.current-track {

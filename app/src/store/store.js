@@ -26,8 +26,8 @@ export default new Vuex.Store({
           },
 
           {
-            name: 'Black Cat Radio',
-            url: 'http://66.45.246.202:8466/;',
+            name: 'Rockhard Lossless',
+            url: 'http://95.211.162.73:8000/;',
             web: 'http://website.com/', 
           },
 
@@ -41,13 +41,31 @@ export default new Vuex.Store({
             name: 'NSB RADIO',
             url: 'http://65.23.157.233:7904/;',
             web: 'http://website.com/', 
+          },
+
+          {
+            name: 'RockLive Radio',
+            url: 'http://46.4.77.21:27815/;',
+            web: 'http://website.com/', 
+          },
+
+          {
+            name: 'Drum Basement',
+            url: 'http://188.165.232.7:8789/;',
+            web: 'http://website.com/', 
+          },
+
+          {
+            name: 'Pure FM Prog',
+            url: 'http://212.7.196.96:8000/;',
+            web: 'http://website.com/', 
           }
 
         ],
         //volumeSlider:'1',
         currentvolume: '1',
         playToggleText: '▶',
-        isPlaying: 0,
+        playstatus: 0,
 
         currentstation: 'Pick a station',
         currenttrack: 'currenttrack',
@@ -63,6 +81,10 @@ export default new Vuex.Store({
 
         updatevolume (state, payload) {
           state.currentvolume = payload.newvolume
+        },
+
+        updateplaystatus (state, payload) {
+          state.playstatus = payload.newplaystatus
         }
     },
 

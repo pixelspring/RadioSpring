@@ -31,7 +31,7 @@
     .player-container {
         display: flex;
         flex-wrap: wrap;
-        margin: 5px 10px 5px 80px;
+        margin: 5px 0px 5px 80px;
         min-height: 43px;
     }
 

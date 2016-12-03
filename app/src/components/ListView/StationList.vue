@@ -44,13 +44,16 @@
             stream: function(name, url, web) {
 
                 if (this.currently_playing == url) {
-                    if (layer.paused == true) { 
+                    if (player.paused == true) { 
                         // User pressed "pause" button on player
                         player.play()
                         } else { 
                         // Presume user wants to pause current stream
                         player.pause()
-                        this.isPlaying = undefined 
+                        this.isPlaying = undefined
+                        store.commit('updateplaystatus', {
+                          newplaystatus: 0
+                        }) 
                     }
                 } else { 
                     // User clicked on stream which is not currently playing
@@ -62,6 +65,9 @@
                       newstation: name
                     })
                     this.isPlaying = url
+                    store.commit('updateplaystatus', {
+                      newplaystatus: 1
+                    })
                     //station_web.innerHTML = '<p><a href="' + web + '" class="pure-button">' + name + ' Website</a></p>'
                 }
 

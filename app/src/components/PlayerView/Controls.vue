@@ -1,15 +1,18 @@
 
 
 <template>
-    <div class="controls">
-
-        <button id="play_control_button" class="play-control-button" @click="toggleplaying">{{playtoggletext}}</button>
-        <button id="show_station_button" @click="showStationList">{{showstationstext}}</button>
-        
-        <div id="volume_slider" class="volume-slider">
-            <input id="volume_slider" type="range" min="0" max="1" step="0.01" v-model="initialvolumeslidervalue" v-on:input="volupdate">
+    <div class="control-container">
+        <div class="controls">
+            <button id="play_control_button" class="play-control-button" @click="toggleplaying">{{playtoggletext}}</button>
+            <div id="volume_slider" class="volume-slider">
+                <input id="volume_slider" type="range" min="0" max="1" step="0.01" v-model="initialvolumeslidervalue" v-on:input="volupdate">
+            </div>
         </div>
-    </div> 
+
+        <div class="expand-container">
+            <button id="show_station_button" class="toggle-list-button" @click="showStationList">{{showstationstext}}</button>
+        </div>
+    </div>
 </template>
 
 
@@ -34,10 +37,18 @@
                     // Player is playing
                     this.playtoggletext = '▶';
                     player.pause()
+
+                    store.commit('updateplaystatus', {
+                      newplaystatus: 0
+                    })
                 } else {
                     // Player is paused
                     this.playtoggletext = '||';
                     player.play()
+
+                    store.commit('updateplaystatus', {
+                      newplaystatus: 1
+                    })
                 }
             },
 
@@ -48,7 +59,7 @@
             return {
                 initialvolumeslidervalue: 1,
                 playtoggletext: this.$store.state.playToggleText,
-                showstationstext: 'Stationlist'
+                showstationstext: '☰'
             }
         },
 
@@ -66,7 +77,7 @@
     function showStationList() {
         const electron = require('electron');
         const win = electron.remote.getCurrentWindow();
-        win.setSize(500, 250, [true])
+        win.setSize(500, 240, [true])
     }
 
 </script>
@@ -79,18 +90,30 @@
 
     .controls {
         margin-left: 16px;
+        height: $bezel-height;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
-    button {
+    .control-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .expand-container {
+        margin-left: 8px;
+    }
+
+    button{
         -webkit-appearance: none;
         border: none;
         background: $control-bg-color;
         color: $control-color;
-        //padding: 5px;
         border-radius: $control-radius;
         outline: 0;
-        height: 25px;
-        width: 75px;
 
         &:active {
             background: $active-color;
@@ -98,7 +121,13 @@
     }
 
     .play-control-button {
-        //width: 50px;
+        height: 25px;
+        width: 55px;
+    }
+
+    .toggle-list-button {
+        height: 44px;
+        width: 25px;
     }
 
     .volume-slider {
@@ -107,7 +136,7 @@
 
     input[type=range] {
         -webkit-appearance: none;
-        width: 100px;
+        width: 55px;
         background: $bg-color;
     }
     input[type=range]:focus {
