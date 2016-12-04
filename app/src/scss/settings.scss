@@ -26,3 +26,10 @@ $scrollbar-color: #1eaedb;
 
 // ListView:
 $listcontainer-bg: #4A4A4A;
+
+
+@mixin hideOverflowText {
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

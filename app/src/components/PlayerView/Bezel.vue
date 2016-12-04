@@ -70,6 +70,11 @@
         width: 35px;
     }
 
+    .station-name,
+    .current-track {
+        @include hideOverflowText;
+    }
+
 	.station-name {
 		font-size: 12px;
         width: 80%;

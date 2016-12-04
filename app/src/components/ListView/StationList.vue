@@ -135,10 +135,7 @@
     td {
         padding: 7px;
         text-align: left;
-
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        @include hideOverflowText;
     }
 
     tbody {
