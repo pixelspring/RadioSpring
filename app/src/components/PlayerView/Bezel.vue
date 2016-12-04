@@ -7,6 +7,7 @@
     	</div>
         <div class="indicators">
             <div id="currentVolume" class="current-volume">&#128264; {{currentvolume.toFixed()}}</div>
+            <div id="currentVolume" class="current-volume">{{currentbitrate}}Kbs</div>
         </div>
     </div>
 </template>
@@ -43,6 +44,9 @@
             },
             currentvolume: function() {
                 return store.state.currentvolume * 100
+            },
+            currentbitrate: function() {
+                return store.state.currentbitrate
             }
         },
 

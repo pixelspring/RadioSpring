@@ -58,6 +58,11 @@
                 } else { 
                     // User clicked on stream which is not currently playing
                     player.src = url
+
+                    store.commit('updatecurrentstreamurl', {
+                      newstreamurl: url
+                    })
+
                     player.play()
                     //currentstation = name
                     //store.commit('updatecurrentstation', name)

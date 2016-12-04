@@ -67,16 +67,31 @@ export default new Vuex.Store({
         playToggleText: '▶',
         playstatus: 0,
 
+        currentstreamurl: '',
         currentstation: 'Pick a station',
-        currenttrack: 'currenttrack',
+        currenttrack: 'Not Playing',
+        currentbitrate: '',
     },
 
     mutations: {
         //updatecurrentstation: state => state.stationname,
-        updatecurrenttrack: state => state.currenttrack,
+        
+        //updatecurrenttrack: state => state.currenttrack,
+
+        updatecurrentstreamurl (state, payload) {
+          state.currentstreamurl = payload.newstreamurl
+        },
 
         updatecurrentstation (state, payload) {
           state.currentstation = payload.newstation
+        },
+
+        updatecurrenttrack (state, payload) {
+          state.currenttrack= payload.newtrack
+        },
+
+        updatecurrentbitrate(state, payload) {
+          state.currentbitrate= payload.newbitrate
         },
 
         updatevolume (state, payload) {
