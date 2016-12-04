@@ -68,7 +68,8 @@ export default new Vuex.Store({
         playstatus: 0,
 
         currentstreamurl: '',
-        currentstation: 'Pick a station',
+        currentstation: 'currentstation',
+        currentstationdesc: 'currentstationdesc',
         currenttrack: 'Not Playing',
         currentbitrate: '',
     },
@@ -84,6 +85,10 @@ export default new Vuex.Store({
 
         updatecurrentstation (state, payload) {
           state.currentstation = payload.newstation
+        },
+
+        updatecurrentstationdesc (state, payload) {
+          state.currentstationdesc = payload.newstationdesc
         },
 
         updatecurrenttrack (state, payload) {

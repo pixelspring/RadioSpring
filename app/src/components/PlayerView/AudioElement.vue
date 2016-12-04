@@ -14,11 +14,8 @@
 
         watch: {
             
-            'playstatus': function(value, mutation) {
-                console.log("VALUE: " + value);
-                console.log("MUTATION: " + mutation);
-                
-                if(value==1) {
+            'playstatus': function(value) {
+                if(value) {
                     this.getstationinfo()
                     this.interval = setInterval(this.getstationinfo, 10000)
                 } else {
@@ -31,9 +28,6 @@
         methods: {
 
             getstationinfo: function() {
-
-                console.log("getStationInfo Fired")
-                //setTimeout(getStationInfo, 10000);
 
                 let stream = this.$store.state.currentstreamurl
 
@@ -50,6 +44,10 @@
                       newtrack: station.title
                     })
 
+                    store.commit('updatecurrentstationdesc', {
+                      newstationdesc: station.headers['icy-description']
+                    })
+
                     store.commit('updatecurrentbitrate', {
                       newbitrate: station.headers['icy-br']
                     })
@@ -60,12 +58,12 @@
 
         },
 
-        data () {
+        /*data () {
             return {
                 musicSrc: 'http://streaming.radionomy.com/PHILOSOMATIKA-PROGRESSIVE',
                 //stream: this.$store.state.currentstreamurl
             }
-        },
+        },*/
 
         computed: {
             prettyvalue: function () {
