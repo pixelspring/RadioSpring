@@ -71,7 +71,7 @@ export default new Vuex.Store({
         currentstation: 'currentstation',
         currentstationdesc: 'currentstationdesc',
         currenttrack: 'Not Playing',
-        currentbitrate: '',
+        currentbitrate: undefined,
     },
 
     mutations: {
