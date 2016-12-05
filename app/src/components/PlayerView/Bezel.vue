@@ -36,6 +36,9 @@
             },
             currentbitrate: function() {
                 return store.state.currentbitrate
+            },
+            playstatus: function() {
+                return store.state.playstatus
             }
         },
 
