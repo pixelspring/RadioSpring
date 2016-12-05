@@ -6,8 +6,8 @@
     		<div id="currentTrack" class="current-track">{{currenttrack}}</div>
     	</div>
         <div class="indicators">
-            <div id="currentVolume" class="current-volume">&#128264; {{currentvolume.toFixed()}}</div>
-            <div id="currentVolume" class="current-volume">{{currentbitrate}}Kbs</div>
+            <div id="currentVolume" class="current-volume"><img src="../../assets/images/volume-icon.svg"> {{currentvolume.toFixed()}}</div>
+            <div id="currentBitrate" class="current-bitrate" v-if="currentbitrate !== undefined"><img src="../../assets/images/download-icon.svg">  {{currentbitrate}}</div>
         </div>
     </div>
 </template>
@@ -77,14 +77,20 @@
 
 	.station-name {
 		font-size: 12px;
+        line-height: 14px;
         width: 80%;
-	}
+    }
 
 	.current-track {
 		font-size: 10px;
 	}
 
     .current-volume {
+        font-size: 10px;
+        line-height: 14px;
+    }
+
+    .current-bitrate {
         font-size: 10px;
     }
 

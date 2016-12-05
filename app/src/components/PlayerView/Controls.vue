@@ -3,14 +3,14 @@
 <template>
     <div class="control-container">
         <div class="controls">
-            <button id="play_control_button" class="play-control-button" @click="toggleplaying">{{playtoggletext}}</button>
+            <button id="play_control_button" class="play-control-button" @click="toggleplaying" v-bind:class="{ playing: playstatus }"></button>
             <div id="volume_slider" class="volume-slider">
                 <input id="volume_slider" type="range" min="0" max="1" step="0.01" v-model="initialvolumeslidervalue" v-on:input="volupdate">
             </div>
         </div>
 
         <div class="expand-container">
-            <button id="show_station_button" class="toggle-list-button" @click="showStationList">{{showstationstext}}</button>
+            <button id="show_station_button" class="toggle-list-button" @click="showStationList"></button>
         </div>
     </div>
 </template>
@@ -19,6 +19,19 @@
 <script>
     import store from 'src/store/store.js'
     export default {
+
+        /*watch: {
+            
+            'playstatus': function(value) {
+                console.log("PLAYSTATUS VALUE: " + value)
+                if(value) {
+                    //this.playtoggletext = '▶';
+                } else {
+                    //this.playtoggletext = '||';
+                }
+            }
+
+        },*/
 
         methods: {
 
@@ -35,7 +48,7 @@
             toggleplaying: function() {
                 if (player.duration > 0 && !player.paused) {
                     // Player is playing
-                    this.playtoggletext = '▶';
+                    //this.playtoggletext = '▶';
                     player.pause()
 
                     store.commit('updateplaystatus', {
@@ -43,7 +56,7 @@
                     })
                 } else {
                     // Player is paused
-                    this.playtoggletext = '||';
+                    //this.playtoggletext = '||';
                     player.play()
 
                     store.commit('updateplaystatus', {
@@ -58,8 +71,8 @@
         data () {
             return {
                 initialvolumeslidervalue: 1,
-                playtoggletext: this.$store.state.playToggleText,
-                showstationstext: '☰'
+                //playtoggletext: '',//this.$store.state.playToggleText,
+                //showstationstext: '☰'
             }
         },
 
@@ -69,6 +82,12 @@
             },
             currentvolume: function() {
                 return store.state.currentvolume * 100
+            },
+            playtoggletext: function() {
+                return store.state.playToggleText
+            },
+            playstatus: function() {
+                return store.state.playstatus
             }
         },
 
@@ -116,18 +135,35 @@
         outline: 0;
 
         &:active {
-            background: $active-color;
+            background-color: $active-color;
         }
     }
 
     .play-control-button {
         height: 25px;
         width: 55px;
+        //background: #000000 url("../../assets/images/pause-icon.svg") 10px 20px/50px 50px;
+        background: url("../../assets/images/play-icon.svg")
+                    center center
+                    no-repeat
+                    black;
+    }
+
+    .playing {
+        //background: #000000 url("../../assets/images/play-icon.svg") 10px 20px/50px 50px;
+        background: url("../../assets/images/pause-icon.svg")
+                    center center
+                    no-repeat
+                    black;
     }
 
     .toggle-list-button {
         height: 44px;
         width: 25px;
+        background: url("../../assets/images/show-icon.svg")
+                    center center
+                    no-repeat
+                    black;
     }
 
     .volume-slider {

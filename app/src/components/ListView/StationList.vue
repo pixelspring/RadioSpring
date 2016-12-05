@@ -11,7 +11,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="s in streamlist" @click.prevent="stream(s.name, s.url, s.web)">
+                <tr v-for="s in streamlist" @click.prevent="playstream(s.name, s.url, s.web)">
                     <td>♡</td>
                     <td>{{ s.name }}</td>
                     <td>{{ s.url }}</td>
@@ -25,23 +25,15 @@
 
 <script>
 
-    //console.log(store.volumeSlider)
-    //console.log(store.playToggleText)
-    //console.log(store.streams)
-
     import store from 'src/store/store.js'
 
     export default {
 
         name: 'container-view',
-
-        components: {
-            //COMPONENT
-        },
  
         methods: {
 
-            stream: function(name, url, web) {
+            playstream: function(name, url, web) {
 
                 if (this.currently_playing == url) {
                     if (player.paused == true) { 
@@ -64,8 +56,6 @@
                     })
 
                     player.play()
-                    //currentstation = name
-                    //store.commit('updatecurrentstation', name)
                     store.commit('updatecurrentstation', {
                       newstation: name
                     })
@@ -73,7 +63,6 @@
                     store.commit('updateplaystatus', {
                       newplaystatus: 1
                     })
-                    //station_web.innerHTML = '<p><a href="' + web + '" class="pure-button">' + name + ' Website</a></p>'
                 }
 
             },

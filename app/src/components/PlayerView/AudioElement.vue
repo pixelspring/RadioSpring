@@ -17,7 +17,7 @@
             'playstatus': function(value) {
                 if(value) {
                     this.getstationinfo()
-                    this.interval = setInterval(this.getstationinfo, 10000)
+                    this.interval = setInterval(this.getstationinfo, 5000)
                 } else {
                     clearInterval(this.interval)
                 }
@@ -32,16 +32,31 @@
                 let stream = this.$store.state.currentstreamurl
 
                 internetradio.getStationInfo(stream, function(error, station) {
-                    console.log(station)
-                    console.log("STATION NAME: " + station.headers['icy-name'])
-                    console.log("NOW PLAYING: " + station.title)
-                    console.log("GENRE: " + station.headers['icy-genre'])
-                    console.log("BITRATE: " + station.headers['icy-br'])
-                    console.log("CONTENT TYPE: " + station.headers['content-type'])
-                    console.log("DESCRIPTION: " + station.headers['icy-description'])
+                    if(error) {console.log(error)}
+                    //console.log("Station: " + station)
+                    //console.log("STATION NAME: " + station.headers['icy-name'])
+                    //console.log("NOW PLAYING: " + station.title)
+                    //console.log("GENRE: " + station.headers['icy-genre'])
+                    //console.log("DESCRIPTION: " + station.headers['icy-description'])
+                    //console.log("BITRATE: " + station.headers['icy-br'])
+                    //console.log("CONTENT TYPE: " + station.headers['content-type'])
+
+                    /*if (station.title !==undefined){
+                        store.commit('updatecurrenttrack', {
+                            newtrack: station.title
+                        })
+                    } else {
+                        store.commit('updatecurrenttrack', {
+                            newtrack: 'No Info Available'
+                        })
+                    }*/
+
+                    store.commit('updatecurrentstation', {
+                      newstation: station.headers['icy-name']
+                    })
 
                     store.commit('updatecurrenttrack', {
-                      newtrack: station.title
+                        newtrack: station.title
                     })
 
                     store.commit('updatecurrentstationdesc', {
