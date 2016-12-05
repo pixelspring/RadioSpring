@@ -168,6 +168,7 @@
 
     .volume-slider {
         font-size: 10px;
+        -webkit-app-region: no-drag;
     }
 
     input[type=range] {
