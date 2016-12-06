@@ -10,7 +10,7 @@
         </div>
 
         <div class="expand-container">
-            <button id="show_station_button" class="toggle-list-button" @click="showStationList"></button>
+            <button id="show_station_button" class="toggle-list-button" @click="toggleStationList"></button>
         </div>
     </div>
 </template>
@@ -65,7 +65,7 @@
                 }
             },
 
-            showStationList
+            toggleStationList
         },
 
         data () {
@@ -93,10 +93,21 @@
 
     }
 
-    function showStationList() {
+    function toggleStationList() {
         const electron = require('electron');
         const win = electron.remote.getCurrentWindow();
-        win.setSize(500, 240, [true])
+
+        let currentwidth  = window.innerWidth;
+        let currentheight = window.innerHeight;
+        let playerheight = 53;
+        let expandedheight = 243;
+
+        if (currentheight == playerheight) {
+            win.setSize(currentwidth, expandedheight, [true])
+        } else {
+            win.setSize(currentwidth, playerheight, [true])
+        }
+        
     }
 
 </script>
