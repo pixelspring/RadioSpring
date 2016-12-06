@@ -28,7 +28,8 @@ function createWindow () {
     fullscreenable: false,
     maximizable: false,
     backgroundColor: '#292E33',
-    titleBarStyle: "hidden",
+    //titleBarStyle: "hidden",
+    frame: false,
     title: "RadioSpring"
   })
 
