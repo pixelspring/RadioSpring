@@ -1,15 +1,12 @@
 
 
 <template>
-    <div class="control-container">
+    <div class="controls-container">
         <div class="controls">
             <button id="play_control_button" class="play-control-button" @click="toggleplaying" v-bind:class="{ playing: playstatus }"></button>
             <div id="volume_slider" class="volume-slider">
                 <input id="volume_slider" type="range" min="0" max="1" step="0.01" v-model="initialvolumeslidervalue" v-on:input="volupdate">
             </div>
-        </div>
-
-        <div class="expand-container">
             <button id="show_station_button" class="toggle-list-button" @click="toggleStationList"></button>
         </div>
     </div>
@@ -19,19 +16,6 @@
 <script>
     import store from 'src/store/store.js'
     export default {
-
-        /*watch: {
-            
-            'playstatus': function(value) {
-                console.log("PLAYSTATUS VALUE: " + value)
-                if(value) {
-                    //this.playtoggletext = '▶';
-                } else {
-                    //this.playtoggletext = '||';
-                }
-            }
-
-        },*/
 
         methods: {
 
@@ -116,25 +100,23 @@
 
     @import "./app/src/scss/settings.scss";
 
-    $volumeSliderheight: 8px;
+    $volumeSliderheight: 14px;
+
+    .controls-container {
+        background: black;
+        color: $bezel-text-color;
+        width: 100%;
+    }
 
     .controls {
-        margin-left: 16px;
-        height: $bezel-height;
+        //margin-left: 16px;
+        //height: $bezel-height;
 
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    .control-container {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .expand-container {
-        margin-left: 8px;
+        align-items: center;
+        flex-grow: 1;
+        justify-content: space-around;
     }
 
     button{
@@ -151,13 +133,13 @@
     }
 
     .play-control-button {
-        height: 25px;
-        width: 55px;
+        height: 20px;
+        width:  50px;
         //background: #000000 url("../../assets/images/pause-icon.svg") 10px 20px/50px 50px;
         background: url("../../assets/images/play-icon.svg")
                     center center
                     no-repeat
-                    black;
+                    $active-color;//black;
     }
 
     .playing {
@@ -165,16 +147,16 @@
         background: url("../../assets/images/pause-icon.svg")
                     center center
                     no-repeat
-                    black;
+                    $active-color;
     }
 
     .toggle-list-button {
-        height: 44px;
-        width: 25px;
+        height: 20px;
+        width:  50px;
         background: url("../../assets/images/show-icon.svg")
                     center center
                     no-repeat
-                    black;
+                    $active-color;//black;
     }
 
     .volume-slider {
@@ -184,36 +166,33 @@
 
     input[type=range] {
         -webkit-appearance: none;
-        width: 55px;
+        //width: 55px;
         background: $bg-color;
     }
+    
     input[type=range]:focus {
         outline: none;
     }
+
     input[type=range]::-webkit-slider-runnable-track {
         width: 100%;
-        height: $volumeSliderheight;
-        box-shadow: 0px 0px 0px #000000;
-        background: black;
-        border-radius: 50px;
-        border: 0px solid #000000;
-    }
-    input[type=range]::-webkit-slider-thumb {
-        box-shadow: 0px 0px 0px #000000;
-        border: 1px solid $active-color;
-        height: $volumeSliderheight;
-        width:  $volumeSliderheight;
-        border-radius: 50px;
-        background: $bg-color;
-        -webkit-appearance: none;
-    }
-    input[type=range]:active::-webkit-slider-runnable-track {
+        height: 1px;
         background: $active-color;
     }
 
-    .volume-display {
-        width: 20px;
-        padding-left: 8px;
+    input[type=range]::-webkit-slider-thumb {
+        border: 2px solid black;
+        height: $volumeSliderheight;
+        width:  $volumeSliderheight;
+        margin-top: -7px;
+
+        border-radius: 50%;
+        background: $active-color;
+        -webkit-appearance: none;
+    }
+
+    input[type=range]:active::-webkit-slider-runnable-track {
+        background: $active-color;
     }
 
 </style>
