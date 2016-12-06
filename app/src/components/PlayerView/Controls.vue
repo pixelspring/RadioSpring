@@ -139,7 +139,7 @@
         background: url("../../assets/images/play-icon.svg")
                     center center
                     no-repeat
-                    $active-color;//black;
+                    black;
     }
 
     .playing {
@@ -156,7 +156,7 @@
         background: url("../../assets/images/show-icon.svg")
                     center center
                     no-repeat
-                    $active-color;//black;
+                    black;
     }
 
     .volume-slider {
@@ -169,7 +169,7 @@
         //width: 55px;
         background: $bg-color;
     }
-    
+
     input[type=range]:focus {
         outline: none;
     }
