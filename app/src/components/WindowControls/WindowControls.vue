@@ -39,12 +39,10 @@
     }
 
     window.onfocus = function() {
-       console.log("FOCUSED")
        windowControls.classList.add('focus');
     };
 
     window.onblur = function() {
-       console.log("BLURRED")
        windowControls.classList.remove('focus');
     };
 
