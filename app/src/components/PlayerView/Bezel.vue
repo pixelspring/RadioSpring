@@ -40,16 +40,19 @@
 	    color: $bezel-text-color;
 
         &:hover .info-pane-container {
-            display : none;
+            display: none;
         }
 
         &:hover .controls-container {
-            display : block;
+            display: block;
         }
+
 	}
 
     .controls-container{ 
         display: none;
     }
+
+    
 
 </style>

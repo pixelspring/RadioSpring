@@ -122,18 +122,17 @@
     button{
         -webkit-appearance: none;
         border: none;
-        background: $control-bg-color;
-        color: $control-color;
         border-radius: $control-radius;
         outline: 0;
 
         &:active {
-            background-color: $active-color;
+            //background-color: $active-color;
+            border: 1px solid $active-color;
         }
     }
 
     .play-control-button {
-        height: 20px;
+        height: 30px;
         width:  50px;
         //background: #000000 url("../../assets/images/pause-icon.svg") 10px 20px/50px 50px;
         background: url("../../assets/images/play-icon.svg")
@@ -147,11 +146,11 @@
         background: url("../../assets/images/pause-icon.svg")
                     center center
                     no-repeat
-                    $active-color;
+                    black;
     }
 
     .toggle-list-button {
-        height: 20px;
+        height: 30px;
         width:  50px;
         background: url("../../assets/images/show-icon.svg")
                     center center

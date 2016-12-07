@@ -63,7 +63,7 @@
 
 	    background: black;
 	    color: $bezel-text-color;
-	}
+    }
 
     .info {
         order: 1;

@@ -3,20 +3,20 @@
     <div id="player_container" class="player-container">
         <!--<window-controls></window-controls>-->
         <bezel></bezel>
-        <!--<audio-element></audio-element>-->
+        <audio-element></audio-element>
     </div>
 </template>
 
 <script>
     //import WindowControls from './WindowControls/WindowControls'
     import Bezel from './PlayerView/Bezel'
-    //import AudioElement from './PlayerView/AudioElement'
+    import AudioElement from './PlayerView/AudioElement'
 
     export default {
         components: {
             // WindowControls,
             Bezel,
-            //AudioElement
+            AudioElement
         },
         name: 'player-view'
     }
