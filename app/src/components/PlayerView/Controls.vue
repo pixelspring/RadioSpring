@@ -109,9 +109,6 @@
     }
 
     .controls {
-        //margin-left: 16px;
-        //height: $bezel-height;
-
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -126,7 +123,6 @@
         outline: 0;
 
         &:active {
-            //background-color: $active-color;
             border: 1px solid $active-color;
         }
     }
@@ -134,7 +130,6 @@
     .play-control-button {
         height: 30px;
         width:  50px;
-        //background: #000000 url("../../assets/images/pause-icon.svg") 10px 20px/50px 50px;
         background: url("../../assets/images/play-icon.svg")
                     center center
                     no-repeat
@@ -142,7 +137,6 @@
     }
 
     .playing {
-        //background: #000000 url("../../assets/images/play-icon.svg") 10px 20px/50px 50px;
         background: url("../../assets/images/pause-icon.svg")
                     center center
                     no-repeat
@@ -159,13 +153,12 @@
     }
 
     .volume-slider {
-        font-size: 10px;
+        font-size: 0px;
         -webkit-app-region: no-drag;
     }
 
     input[type=range] {
         -webkit-appearance: none;
-        //width: 55px;
         background: $bg-color;
     }
 
@@ -183,8 +176,7 @@
         border: 2px solid black;
         height: $volumeSliderheight;
         width:  $volumeSliderheight;
-        margin-top: -7px;
-
+        margin-top: -$volumeSliderheight/2;
         border-radius: 50%;
         background: $active-color;
         -webkit-appearance: none;

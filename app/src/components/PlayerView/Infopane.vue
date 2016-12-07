@@ -54,13 +54,8 @@
     @import "./app/src/scss/settings.scss";
 
     .info-pane-container {
-	    //padding: 8px 12px;
-	    //border-radius: 4px;
-
-	    //height: $bezel-height;
         display: flex;
         flex-grow: 1;
-
 	    background: black;
 	    color: $bezel-text-color;
     }
