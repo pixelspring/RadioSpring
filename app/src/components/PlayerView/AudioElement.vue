@@ -1,6 +1,6 @@
 <template>
     <div>
-        <audio id="player">
+        <audio id="player" crossOrigin = "anonymous";>
             <source :src="musicSrc">
         </audio>
     </div>

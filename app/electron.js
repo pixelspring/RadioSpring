@@ -30,7 +30,8 @@ function createWindow () {
     backgroundColor: '#292E33',
     //titleBarStyle: "hidden",
     frame: false,
-    title: "RadioSpring"
+    title: "RadioSpring",
+    web-preferences: {'web-security': false}
   })
 
   mainWindow.loadURL(config.url)
