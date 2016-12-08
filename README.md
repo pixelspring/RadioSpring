@@ -1,5 +1,7 @@
 # RadioSpring
 
+![RadioSpring](http://i.imgur.com/yJVXs6r.png)
+
 > Internet radio player app, built with Vue and Electron
 
 ## Build Setup
