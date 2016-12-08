@@ -31,7 +31,9 @@ function createWindow () {
     //titleBarStyle: "hidden",
     frame: false,
     title: "RadioSpring",
-    web-preferences: {'web-security': false}
+    "web-preferences": {
+      //"web-security": false
+    }
   })
 
   mainWindow.loadURL(config.url)
