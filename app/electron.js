@@ -33,6 +33,7 @@ function createWindow () {
     title: "RadioSpring",
     "web-preferences": {
       //"web-security": false
+      scrollBounce: true
     }
   })
 
