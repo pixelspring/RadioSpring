@@ -4,7 +4,10 @@
       	<visualizer></visualizer>
         <div class="info">
     		<div id="stationName" class="station-name">{{currentstation}} <span v-if="currentstationdesc !== undefined"> - {{currentstationdesc}}</span></div>
-    		<div id="currentTrack" class="current-track">{{currenttrack}}</div>
+            <transition-group appear name="fade" mode="in-out">
+                <div id="currentTrack" class="current-track" key="load" v-show="bufferstatus">Loading...</div>
+                <div id="currentTrack" class="current-track" key="track" v-show="!bufferstatus">{{currenttrack}}</div>
+            </transition-group>
     	</div>
         <div class="indicators">
             <div id="currentVolume" class="current-volume"><img src="../../assets/images/volume-icon.svg"> {{currentvolume.toFixed()}}</div>
@@ -42,6 +45,9 @@
             },
             currentbitrate: function() {
                 return store.state.currentbitrate
+            },
+            bufferstatus: function() {
+                return store.state.bufferstatus
             }
         },
 
@@ -52,6 +58,8 @@
 <style lang="scss" scoped>
 
     @import "./app/src/scss/settings.scss";
+
+    @include fadeTransition;
 
     .info-pane-container {
         display: flex;
@@ -84,6 +92,7 @@
 
 	.current-track {
 		font-size: 10px;
+        position: absolute;
 	}
 
     .current-volume {

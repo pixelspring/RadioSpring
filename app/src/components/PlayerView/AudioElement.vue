@@ -1,12 +1,23 @@
 <template>
     <div>
-        <audio id="player">
+        <audio 
+            id="player" 
+            @stalled="onStalled"
+            @loadstart="onLoadstart"
+            @loadedmetadata="onLoadedmetadata"
+            @waiting="onWaiting"
+            @play="onPlay"
+            @playing="onPlaying"
+            @pause="onPause"
+            @emptied="onEmptied"
+        >
             <source :src="musicSrc">
         </audio>
     </div>
 </template>
 
 <script>
+
     import store from 'src/store/store.js'
     var internetradio = require('node-internet-radio');
 
@@ -26,6 +37,40 @@
         },
 
         methods: {
+
+            onStalled: function () {
+                console.log("PLAYBACK STALLED")
+                store.commit('updatebufferstatus', {
+                    newbufferstatus: false
+                })
+            },
+            onLoadstart: function () {
+                console.log("LOAD START")
+            },
+            onWaiting: function () {
+                console.log("WAITING (buffering)")
+                store.commit('updatebufferstatus', {
+                    newbufferstatus: true
+                })
+            },
+            onLoadedmetadata: function () {
+                console.log("LOADEDMETADATA")
+            },
+            onPlay: function () {
+                console.log("PLAY")
+            },
+            onPlaying: function () {
+                console.log("PLAYING")
+                store.commit('updatebufferstatus', {
+                    newbufferstatus: false
+                })
+            },
+            onPause: function () {
+                console.log("PAUSE")
+            },
+            onEmptied: function () {
+                console.log("EMPTIED")
+            },
 
             getstationinfo: function() {
 

@@ -66,10 +66,11 @@ export default new Vuex.Store({
         currentvolume: '1',
         playToggleText: '▶',
         playstatus: 0,
+        bufferstatus: 0,
 
         currentstreamurl: '',
-        currentstation: 'currentstation',
-        currentstationdesc: 'currentstationdesc',
+        currentstation: 'Pick a station',
+        currentstationdesc: undefined,
         currenttrack: 'Not Playing',
         currentbitrate: undefined,
     },
@@ -105,6 +106,10 @@ export default new Vuex.Store({
 
         updateplaystatus (state, payload) {
           state.playstatus = payload.newplaystatus
+        },
+
+        updatebufferstatus (state, payload) {
+          state.bufferstatus = payload.newbufferstatus
         }
     },
 

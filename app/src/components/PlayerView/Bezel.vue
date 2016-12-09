@@ -53,6 +53,4 @@
         display: none;
     }
 
-    
-
 </style>
