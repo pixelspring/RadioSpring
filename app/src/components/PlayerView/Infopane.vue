@@ -1,19 +1,24 @@
 
 <template>
-    <div class="info-pane-container">
-      	<visualizer></visualizer>
-        <div class="info">
-    		<div id="stationName" class="station-name">{{currentstation}} <span v-if="currentstationdesc !== undefined"> - {{currentstationdesc}}</span></div>
-            <transition-group appear name="fade" mode="in-out">
-                <div id="currentTrack" class="current-track" key="load" v-show="bufferstatus">Loading...</div>
-                <div id="currentTrack" class="current-track" key="track" v-show="!bufferstatus">{{currenttrack}}</div>
-            </transition-group>
-    	</div>
-        <div class="indicators">
-            <div id="currentVolume" class="current-volume"><img src="../../assets/images/volume-icon.svg"> {{currentvolume.toFixed()}}</div>
-            <div id="currentBitrate" class="current-bitrate" v-if="currentbitrate !== undefined"><img src="../../assets/images/download-icon.svg">  {{currentbitrate}}</div>
-        </div>
-    </div>
+
+    <table class="info-pane-container" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="visualizer" rowspan="2"><visualizer></visualizer></td>
+            <td class="station-name">{{currentstation}} <span v-if="currentstationdesc !== undefined"> - {{currentstationdesc}}</span></td>
+            <td class="indicators current-volume"><img src="../../assets/images/volume-icon.svg"> {{currentvolume.toFixed()}}</td>
+        </tr>
+
+        <tr>
+            <td class="track-title">
+                <transition-group appear name="fade" mode="in-out">
+                    <span class="current-track" key="load" v-show="bufferstatus">Loading...</span>
+                    <span class="current-track" key="track" v-show="!bufferstatus">{{currenttrack}}</span>
+                </transition-group>
+            </td>
+            <td class="indicators current-bitrate"><img src="../../assets/images/download-icon.svg">  {{currentbitrate}}</td>
+        </tr>
+    </table> 
+
 </template>
 
 <script>
@@ -61,43 +66,46 @@
 
     @include fadeTransition;
 
-    .info-pane-container {
-        display: flex;
-        flex-grow: 1;
-	    background: black;
-	    color: $bezel-text-color;
+    table {
+        width: 100%;
+        color: $bezel-text-color;
+        background: black;
+    }
+    tr,
+    td {
+        padding: 0;
+    }
+    tr {
+        height: 15px;
+    }
+    td {
+        max-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
-    .info {
-        order: 1;
-        width: auto;
-        flex-grow: 1;
+    .visualizer {
+        width: 30px;
+        height: 30px;
+        font-size: 10px;
+    }
+
+    .station-name {
+        font-size: 12px;
+    }
+
+    .current-track {
+        font-size: 10px;
     }
 
     .indicators {
-        order: 3;
-        width: 35px;
+        width: 40px;
+        padding-left: 6px;
     }
-
-    .station-name,
-    .current-track {
-        @include hideOverflowText;
-    }
-
-	.station-name {
-		font-size: 12px;
-        line-height: 14px;
-        width: 80%;
-    }
-
-	.current-track {
-		font-size: 10px;
-        position: absolute;
-	}
 
     .current-volume {
         font-size: 10px;
-        line-height: 14px;
     }
 
     .current-bitrate {
