@@ -10,8 +10,8 @@
 
         <tr>
             <td class="track-title">
-                <transition-group appear name="fade" mode="in-out">
-                    <span class="current-track" key="load" v-show="bufferstatus">Loading...</span>
+                <transition-group appear name="fade">
+                    <span class="current-track loading" key="load" v-show="bufferstatus">Loading...</span>
                     <span class="current-track" key="track" v-show="!bufferstatus">{{currenttrack}}</span>
                 </transition-group>
             </td>
@@ -97,6 +97,7 @@
 
     .current-track {
         font-size: 10px;
+        position: absolute;
     }
 
     .indicators {
