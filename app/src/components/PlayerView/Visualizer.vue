@@ -2,7 +2,7 @@
 <template>
     <div id='visualizer' class="visualizer-container">
 
-        <div class="visualizer playing" v-if="playstatus">
+        <div class="visualizer playing" v-if="playstatus && !bufferstatus">
             <div class='bar'></div>
             <div class='bar'></div>
             <div class='bar'></div>
@@ -103,6 +103,9 @@
     .bar:nth-child(5)  { left: 17px; animation-duration: 500ms; }
 
     // LOADING INDICATOR:
+    .loading {
+        z-index: 100;
+    }
     .spinner {
         background: black;
         border-radius: 50%;
@@ -113,7 +116,6 @@
         animation: spin 1s infinite ease-in-out;
         position: absolute;
         top: 6px;
-        z-index: 100;
     }
 
     @keyframes spin {
