@@ -41,7 +41,7 @@
             onStalled: function () {
                 console.log("PLAYBACK STALLED")
                 store.commit('updatebufferstatus', {
-                    newbufferstatus: false
+                    newbufferstatus: true
                 })
             },
             onLoadstart: function () {
