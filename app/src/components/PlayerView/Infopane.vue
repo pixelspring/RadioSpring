@@ -98,6 +98,7 @@
     .current-track {
         font-size: 10px;
         position: absolute;
+        top: 32px;
     }
 
     .indicators {
