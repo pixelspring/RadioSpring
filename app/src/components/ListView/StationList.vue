@@ -135,10 +135,12 @@
     tbody tr {
         background: #424242;
         border-bottom: 1px solid #444;
+        &:hover {background-color: #000000;}
     }
 
     tbody tr:nth-child(odd) {
         background-color: #3C3C3C;
+        &:hover {background-color: #222222;}
     }
 
     td:nth-child(1), th:nth-child(1) { width: 5% }
