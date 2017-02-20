@@ -17,6 +17,17 @@
     import store from 'src/store/store.js'
     export default {
 
+        created: function () {
+
+            // Add keyboard event listener(s):
+            window.addEventListener('keydown', e => {
+                if (e.key === 'Space' || e.keyCode === 32) {
+                    this.toggleplaying()
+                }
+            });
+
+        },
+
         methods: {
 
             volupdate: function(e) {
@@ -93,6 +104,14 @@
         }
         
     }
+
+    // Keyboard Events:
+    //document.addEventListener('keydown', e => {
+    //    if (e.key === 'Space' || e.keyCode === 32) {
+    //        //alert("Space Pressed")
+    //        this.togglePlaying()
+    //    }
+    //});
 
 </script>
 
