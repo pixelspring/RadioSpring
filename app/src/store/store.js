@@ -93,11 +93,11 @@ export default new Vuex.Store({
         },
 
         updatecurrenttrack (state, payload) {
-          state.currenttrack= payload.newtrack
+          state.currenttrack = payload.newtrack
         },
 
         updatecurrentbitrate(state, payload) {
-          state.currentbitrate= payload.newbitrate
+          state.currentbitrate = payload.newbitrate
         },
 
         updatevolume (state, payload) {
