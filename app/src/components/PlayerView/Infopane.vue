@@ -11,7 +11,7 @@
         <tr>
             <td class="track-title">
                 <transition-group appear name="fade">
-                    <span class="current-track loading" key="load" v-show="bufferstatus">Loading...</span>
+                    <span class="current-track loading" key="load" v-show="bufferstatus">Loading Stream...</span>
                     <span class="current-track" key="track" v-show="!bufferstatus">{{currenttrack}}</span>
                 </transition-group>
             </td>
