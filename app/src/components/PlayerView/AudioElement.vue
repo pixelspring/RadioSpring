@@ -40,33 +40,29 @@
 
             onStalled: function () {
                 console.log("PLAYBACK STALLED")
-                store.commit('updatebufferstatus', {
-                    newbufferstatus: true
-                })
+                store.commit('updatebufferstatus', { newbufferstatus: true })
             },
             onLoadstart: function () {
                 console.log("LOAD START")
             },
             onWaiting: function () {
                 console.log("WAITING (buffering)")
-                store.commit('updatebufferstatus', {
-                    newbufferstatus: true
-                })
+                store.commit('updatebufferstatus', { newbufferstatus: true })
             },
             onLoadedmetadata: function () {
                 console.log("LOADEDMETADATA")
             },
             onPlay: function () {
                 console.log("PLAY")
+                store.commit('updatecurrenttrack', { newtrack: 'Getting Track Info…' })
             },
             onPlaying: function () {
                 console.log("PLAYING")
-                store.commit('updatebufferstatus', {
-                    newbufferstatus: false
-                })
+                store.commit('updatebufferstatus', { newbufferstatus: false })
             },
             onPause: function () {
                 console.log("PAUSE")
+                store.commit('updatecurrenttrack', { newtrack: 'Paused' })
             },
             onEmptied: function () {
                 console.log("EMPTIED")
@@ -77,7 +73,10 @@
                 let stream = this.$store.state.currentstreamurl
 
                 internetradio.getStationInfo(stream, function(error, station) {
-                    if(error) {console.log(error)}
+                    if(error) {
+                        console.log("ERR::" + error)
+                        store.commit('updatecurrenttrack', { newtrack: error })
+                    }
 
                     store.commit('updatecurrentstation', {
                       newstation: station.headers['icy-name']
