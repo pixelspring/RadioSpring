@@ -48,6 +48,7 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "dexie": "^1.5.1",
     "node-internet-radio": "^0.1.4"
   }
 }

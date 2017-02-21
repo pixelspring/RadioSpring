@@ -11,6 +11,8 @@
 </template>
 
 <script>
+    import Database from 'src/lib/Database.js'
+
     import StationList from './ListView/StationList'
 
     export default {
