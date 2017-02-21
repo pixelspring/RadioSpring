@@ -1,5 +1,3 @@
-
-
 <template>
     <div class="controls-container">
         <div class="controls">
@@ -20,7 +18,7 @@
         created: function () {
 
             // Add keyboard event listener(s):
-            window.addEventListener('keydown', e => {
+            window.addEventListener('keypress', e => {
                 if (e.key === 'Space' || e.keyCode === 32) {
                     this.toggleplaying()
                 }
@@ -49,6 +47,10 @@
                     store.commit('updateplaystatus', {
                       newplaystatus: 0
                     })
+
+                    //store.commit('updatecurrenttrack', {
+                    //  newtrack: 'Paused'
+                    //})
                 } else {
                     // Player is paused
                     //this.playtoggletext = '||';
@@ -57,6 +59,10 @@
                     store.commit('updateplaystatus', {
                       newplaystatus: 1
                     })
+
+                    //store.commit('updatecurrenttrack', {
+                    //  newtrack: 'Resuming Play'
+                    //})
                 }
             },
 
@@ -104,14 +110,6 @@
         }
         
     }
-
-    // Keyboard Events:
-    //document.addEventListener('keydown', e => {
-    //    if (e.key === 'Space' || e.keyCode === 32) {
-    //        //alert("Space Pressed")
-    //        this.togglePlaying()
-    //    }
-    //});
 
 </script>
 
