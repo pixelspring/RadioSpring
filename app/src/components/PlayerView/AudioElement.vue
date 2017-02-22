@@ -10,6 +10,8 @@
             @playing="onPlaying"
             @pause="onPause"
             @emptied="onEmptied"
+            @error="errorHandler"
+            preload="none"
         >
             <source :src="musicSrc">
         </audio>
@@ -68,6 +70,24 @@
                 console.log("EMPTIED")
             },
 
+            errorHandler: function () {    
+                // ---------------------------------------------
+                // Errors:
+                // ---------------------------------------------
+                // 1 MEDIA_ERR_ABORTED
+                //   The fetching of the associated resource has been aborted by the user  
+                // 2 MEDIA_ERR_NETWORK
+                //   A network error caused the resource to stop being fetched.
+                // 3 MEDIA_ERR_DECODE
+                //   A decoding error caused the resource to stop being fetched.   
+                // 4 MEDIA_ERR_SRC_NOT_SUPPORTED
+                //   The associated resource has been detected to be not suitable.
+
+                let errorCode = player.error.code
+                console.log(errorCode)
+
+            },
+
             getstationinfo: function() {
 
                 let stream = this.$store.state.currentstreamurl
@@ -76,6 +96,11 @@
                     if(error) {
                         console.log("ERR::" + error)
                         store.commit('updatecurrenttrack', { newtrack: error })
+                        player.pause()
+                        // By setting the media element's src attribute to an empty string, you destroy the element's internal decoder, which stops the network download.
+                        player.src = ""
+                        player.currentTime = 0;
+                        //alert(error)
                     }
 
                     store.commit('updatecurrentstation', {
