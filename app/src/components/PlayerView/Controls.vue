@@ -21,6 +21,7 @@
             window.addEventListener('keypress', e => {
                 if (e.key === 'Space' || e.keyCode === 32) {
                     this.toggleplaying()
+                    e.preventDefault()
                 }
             });
 
@@ -41,39 +42,30 @@
             toggleplaying: function() {
                 if (player.duration > 0 && !player.paused) {
                     // Player is playing
-                    //this.playtoggletext = '▶';
                     player.pause()
+                    player.src = ''
 
                     store.commit('updateplaystatus', {
                       newplaystatus: 0
                     })
-
-                    //store.commit('updatecurrenttrack', {
-                    //  newtrack: 'Paused'
-                    //})
                 } else {
                     // Player is paused
-                    //this.playtoggletext = '||';
+                    player.src = this.currentstream
                     player.play()
 
                     store.commit('updateplaystatus', {
                       newplaystatus: 1
                     })
-
-                    //store.commit('updatecurrenttrack', {
-                    //  newtrack: 'Resuming Play'
-                    //})
                 }
             },
 
+            // Show/hide station list:
             toggleStationList
         },
 
         data () {
             return {
-                initialvolumeslidervalue: 1,
-                //playtoggletext: '',//this.$store.state.playToggleText,
-                //showstationstext: '☰'
+                initialvolumeslidervalue: 1
             }
         },
 
@@ -89,6 +81,9 @@
             },
             playstatus: function() {
                 return store.state.playstatus
+            },
+            currentstream: function() {
+                return store.state.currentstreamurl
             }
         },
 
