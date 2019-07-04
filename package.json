@@ -14,7 +14,8 @@
     "vuex:module": "node tasks/vuex/module.js",
     "postinstall": "cd app && npm install",
     "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "prepare": "npm run snyk-protect",
+    "prepublish": "npm run snyk-protect"
   },
   "author": "Mike Seaby <mike@pixelspring.co.uk>",
   "license": "MIT",
@@ -52,7 +53,7 @@
   "dependencies": {
     "dexie": "^1.5.1",
     "node-internet-radio": "^0.1.4",
-    "snyk": "^1.88.0"
+    "snyk": "^1.189.0"
   },
   "snyk": true
 }
