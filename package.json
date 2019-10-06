@@ -52,7 +52,7 @@
   "dependencies": {
     "dexie": "^1.5.1",
     "node-internet-radio": "^0.1.4",
-    "snyk": "^1.88.0"
+    "snyk": "^1.231.0"
   },
   "snyk": true
 }
